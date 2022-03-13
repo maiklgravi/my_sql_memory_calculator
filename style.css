@@ -1,0 +1,90 @@
+body{
+    margin: 0;
+    background-color: rgb(92, 92, 97);
+    
+}
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+
+}
+p{
+    margin: 0 0 10px 0;
+}
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+.font_total{
+    font-size: 34px;
+}
+.table_item{
+    padding: 5px;
+}
+.first_colum{
+    background-color: rgb(156, 156, 156);
+}
+.two_colum{
+    background-color: rgb(197, 197, 197);
+}
+.three_colum{
+    background-color: rgb(255, 210, 88);
+}
+.table{
+    font-family: 'Fredoka', sans-serif;
+    text-align: center;
+    margin-top: 30px;
+    border-radius: 25px;
+    padding: 80px;
+    padding-top: 30px;
+    width: 100%;
+}
+.sql_icon{
+   
+    height: 100px;
+    margin-left: 40px;
+    margin-top: 10px;
+}
+.font{
+    margin-right: 100px;
+    font-size: 30px;
+    font-family: 'Fredoka', sans-serif;
+}
+.description{
+    margin-left: 80px;
+    margin-right: 80px;
+    margin-top: 40px;
+    font-family: 'Poppins', sans-serif;
+}
+.title{
+    display: flex;
+    padding: 5px;
+    font-family: 'Fredoka', sans-serif;
+    width: 100%;
+    font-size: 30px;
+    justify-content: center;
+}
+.flex{
+    background-color: #fff;
+    margin: 40px;
+    border-radius: 25px;
+    padding-bottom: 20px;
+    margin-bottom: 5px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.content{
+    display: block;
+    padding: 10px;
+    background-color: #fff;
+    margin: 40px;
+    border-radius: 25px;
+}
+.container{
+    padding: 0 15px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}

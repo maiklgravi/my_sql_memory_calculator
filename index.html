@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600&display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+	<title>MSQL calculator</title>
+</head>
+<body>
+<div>
+<div class="flex">
+	<img src="sql_icon.png" class="sql_icon">
+	<div class="font">
+		MySQL Calculator
+	</div>
+</div>
+<div class="content">
+<div class="title">MySQL Memory Calculator</div>
+<div class="description">
+	Use this form when tuning your MySQL database server to calculate the maximum MySQL memory usage based on configuration settings used in your my.cnf file.
+</div>
+<div>
+	<table class="table">
+		<tr>
+		  <th class="table_item first_colum">Parameter</th>
+		  <th  class="table_item two_colum">MySQL Default</th>
+		  <th  class="table_item three_colum">Your Value</th>
+		</tr>
+		<tr>
+		  <td class="first_colum" >key_buffer_size</td>
+		  <td class="two_colum">8 MB</td>
+		  <td class="three_colum"><input type="text" id="key_buffer_size" value="8"> MB</td>
+		</tr>
+		<tr>
+			<td class="first_colum">query_cache_size</td>
+			<td class="two_colum">0 MB</td>
+			<td class="three_colum"><input id="query_cache_size" type="text" value="0"> MB</td>
+		  </tr>
+		  <tr>
+			<td class="first_colum">innodb_buffer_pool_size</td>
+			<td class="two_colum">128 MB</td>
+			<td class="three_colum"><input type="text" id="innodb_buffer_pool_size" value="128"> MB</td>
+		  </tr>
+		  <tr>
+			<td class="first_colum">innodb_log_buffer_size</td>
+			<td class="two_colum">16 MB</td>
+			<td class="three_colum"><input type="text" id="innodb_log_buffer_size" value="16"> MB</td>
+		  </tr>
+		  <tr>
+			<td class="first_colum">max_allowed_packet</td>
+			<td class="two_colum">4 MB</td>
+			<td class="three_colum"><input type="text" id="max_allowed_packet" value="4"> MB</td>
+		  </tr>
+		  <tr>
+			<td class="first_colum">max_connections</td>
+			<td class="two_colum">151</td>
+			<td class="three_colum"><input type="text" id="max_connections" value="151"></td>
+		  </tr>
+		  <tr>
+			<td class="first_colum">read_buffer_size</td>
+			<td class="two_colum"> 0.125 MB</td>
+			<td class="three_colum"><input type="text" id="read_buffer_size" value="0.125"> MB</td>
+		  </tr>
+		  <tr>
+			<td class="first_colum">read_rnd_buffer_size</td>
+			<td class="two_colum">0.25 MB</td>
+			<td class="three_colum"><input type="text" id="read_rnd_buffer_size" value="0.25"> MB</td>
+		  </tr>
+		  <tr>
+			<td class="first_colum">sort_buffer_size</td>
+			<td class="two_colum">0.25 MB</td>
+			<td class="three_colum"><input type="text" id="sort_buffer_size" value="0.25"> MB</td>
+		  </tr>
+		  <tr>
+			<td class="first_colum">join_buffer_size</td>
+			<td class="two_colum">0.25 MB</td>
+			<td class="three_colum"><input type="text" id="join_buffer_size" value="0.25"> MB</td>
+		  </tr>
+		  <tr>
+			<td class="first_colum">binlog_cache_size</td>
+			<td class="two_colum">0.03125 MB</td>
+			<td class="three_colum"><input type="text" id="binlog_cache_size" value="0.03125"> MB</td>
+		  </tr>
+		  <tr>
+			<td class="first_colum">thread_stack</td>
+			<td class="two_colum">0.1875 MB</td>
+			<td class="three_colum"><input type="text" id="thread_stack" value="0.1875 "> MB</td>
+		  </tr>
+		  <tr>
+			<td class="first_colum">tmp_table_size</td>
+			<td class="two_colum">16 MB</td>
+			<td class="three_colum"><input type="text" id="tmp_table_size" value="16"> MB</td>
+		  </tr>
+		  <tr>
+			<td class="first_colum">net_buffer_length</td>
+			<td class="two_colum">0.015625 MB</td>
+			<td class="three_colum"><input type="text" id="net_buffer_length" value="0.015625"> MB</td>
+		  </tr>
+		  <tr>
+			<td class="font_total first_colum">Total:</td>
+			<td class="font_total two_colum">2572 MB</td>
+			<td class="font_total three_colum" id="total">2572 MB</td>
+		  </tr>
+	  </table>
+</div>
+</div>
+</div>
+<script src="canculate.js"></script>
+</body>
+</html>
