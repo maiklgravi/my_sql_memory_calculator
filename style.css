@@ -21,15 +21,6 @@ p{
 .table_item{
     padding: 5px;
 }
-.first_colum{
-    background-color: rgb(156, 156, 156);
-}
-.two_colum{
-    background-color: rgb(197, 197, 197);
-}
-.three_colum{
-    background-color: rgb(255, 210, 88);
-}
 .table{
     font-family: 'Fredoka', sans-serif;
     text-align: center;
