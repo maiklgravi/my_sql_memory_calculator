@@ -245,11 +245,82 @@ function rekomandation(){
         Min innodb_buffer_pool_size value is 5 MB
       </div>
     </div>`
-    }
-    
-    
+    }    
 }
+document.getElementById('inputfile')
+            .addEventListener('change', function() {  
+            var fr=new FileReader();
+            fr.onload=function(){
+            configuration = String(fr.result);
+             if(Number(configuration.split('key_buffer_size=').pop().split('M')[0]))
+             {
+              key_buffer_size.value = Number(configuration.split('key_buffer_size=').pop().split('M')[0]);
+             }
 
+             if(Number(configuration.split('query_cache_size=').pop().split('M')[0]))
+             {
+              query_cache_size.value = Number(configuration.split('query_cache_size=').pop().split('M')[0]);
+             }
+
+             if(Number(configuration.split('innodb_buffer_pool_size=').pop().split('M')[0]))
+             {
+              innodb_buffer_pool_size.value = Number(configuration.split('innodb_buffer_pool_size=').pop().split('M')[0]);
+             }
+
+             if(Number(configuration.split('innodb_log_buffer_size=').pop().split('M')[0]))
+             {
+              innodb_log_buffer_size.value = Number(configuration.split('innodb_log_buffer_size=').pop().split('M')[0]);
+             }
+             if(Number(configuration.split('max_allowed_packet=').pop().split('M')[0]))
+             {
+              max_allowed_packet.value = Number(configuration.split('max_allowed_packet=').pop().split('M')[0]);
+             }
+
+             if(true)
+             {
+             configuration.startsWith('');
+             }
+
+             if(Number(configuration.split('read_buffer_size=').pop().split('M')[0]))
+             {
+              read_buffer_size.value = Number(configuration.split('read_buffer_size=').pop().split('M')[0]);
+             }
+             if(Number(configuration.split('read_rnd_buffer_size=').pop().split('M')[0]))
+             {
+              read_rnd_buffer_size.value = Number(configuration.split('read_rnd_buffer_size=').pop().split('M')[0]);
+             }
+
+             if(Number(configuration.split('sort_buffer_size=').pop().split('M')[0]))
+             {
+              sort_buffer_size.value = Number(configuration.split('sort_buffer_size=').pop().split('M')[0]);
+             }
+
+             if(Number(configuration.split('join_buffer_size=').pop().split('M')[0]))
+             {
+              join_buffer_size.value = Number(configuration.split('join_buffer_size=').pop().split('M')[0]);
+             }
+
+             if(Number(configuration.split('binlog_cache_size=').pop().split('M')[0]))
+             {
+              binlog_cache_size.value = Number(configuration.split('binlog_cache_size=').pop().split('M')[0]);
+             }
+
+             if(Number(configuration.split('thread_stack=').pop().split('M')[0]))
+             {
+              thread_stack.value = Number(configuration.split('thread_stack=').pop().split('M')[0]);
+             }
+
+             if(Number(configuration.split('tmp_table_size=').pop().split('M')[0]))
+             {
+              tmp_table_size.value = Number(configuration.split('tmp_table_size=').pop().split('M')[0]);
+             }
+
+             if(Number(configuration.split('net_buffer_length=').pop().split('M')[0]))
+             {
+              net_buffer_length.value = Number(configuration.split('net_buffer_length=').pop().split('M')[0]);
+             }
+            }
+            fr.readAsText(this.files[0]);})
 
 key_buffer_size.onchange = canculate;
 query_cache_size.onchange = canculate;

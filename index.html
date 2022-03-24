@@ -46,6 +46,10 @@
 		<option value="2">Other</option>
 	  </select>
 </div>
+<div class="col p-3">
+	<div class="fs-6 mb-2">Paste you configuration:</div>
+	<input class="form-control" type="file" id="inputfile" accept=".cnf">
+</div>
 <div id="info">
 
 </div>
@@ -66,7 +70,7 @@
 			<div class="accordion-body">
 				<strong>Default value is 8 MB.</strong> key_buffer_size is a MyISAM variable which determines the size of the index buffers held in memory, which affects the speed of index reads. Note that Aria tables by default make use of an alternative setting, aria-pagecache-buffer-size.
 			  A good rule of thumb for servers consisting particularly of MyISAM tables is for about 25% or more of the available server memory to be dedicated to the key buffer.
-			  If you don't make use of MyISAM tables at all, you can set this value, such as 32 MB.
+			  <strong>Recommended value 16-32 MB.</strong>
 			</div>
 		  </div>
 		</div>
@@ -91,7 +95,7 @@
 		  </h2>
 		  <div id="collapseTwo" class="accordion-collapse collapse " aria-labelledby="headingOne" data-bs-parent="#accordionExample">
 			<div class="accordion-body">
-				<strong>Default value is 0 MB.</strong> The query cache is deprecated as of MySQL 5.7.20, and is removed in MySQL 8.0. Deprecation includes query_cache_size.The amount of memory allocated for caching query results. By default, the query cache is disabled. 
+				<strong>Default value is 0 MB.</strong> The query cache is deprecated as of MySQL 5.7.20, and is removed in MySQL 8.0. Deprecation includes query_cache_size.The amount of memory allocated for caching query results. By default, the query cache is disabled. <strong>Recommended value 0 MB.</strong>
 			</div>
 		  </div>
 		</div>
@@ -117,7 +121,7 @@
 		  <div id="collapset_innodb_buffer_pool_size" class="accordion-collapse collapse " aria-labelledby="headingOne" data-bs-parent="#accordionExample">
 			<div class="accordion-body">
 				<strong>Default value is 128 MB.</strong> The size in bytes of the buffer pool, the memory area where InnoDB caches table and index data.
-				A larger buffer pool requires less disk I/O to access the same table data more than once. On a dedicated database server, you might set the buffer pool size to 80% of the machine's physical memory size. Be aware of the following potential issues when configuring buffer pool size, and be prepared to scale back the size of the buffer pool if necessary.
+				A larger buffer pool requires less disk I/O to access the same table data more than once. On a dedicated database server, you might set the buffer pool size to 80% of the machine's physical memory size. Be aware of the following potential issues when configuring buffer pool size, and be prepared to scale back the size of the buffer pool if necessary.<strong>Recommended value is 70-80 % of available RAM.</strong>
 			</div>
 		  </div>
 		</div>
@@ -142,7 +146,7 @@
 		  </h2>
 		  <div id="collapset_innodb_log_buffer_size" class="accordion-collapse collapse " aria-labelledby="headingOne" data-bs-parent="#accordionExample">
 			<div class="accordion-body">
-				<strong>Default value is 16 MB.</strong> The size in bytes of the buffer that InnoDB uses to write to the log files on disk. 
+				<strong>Default value is 16 MB.</strong> The size in bytes of the buffer that InnoDB uses to write to the log files on disk.<strong>Recommended value 16 MB.</strong> 
 			</div>
 		  </div>
 		</div>
@@ -167,7 +171,7 @@
 		  </h2>
 		  <div id="collapset_max_allowed_packet" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
 			<div class="accordion-body">
-				<strong> The default is 64MB. </strong> The maximum size of one packet or any generated/intermediate string, or any parameter sent by the mysql_stmt_send_long_data() C API function.
+				<strong> The default is 64MB. </strong> The maximum size of one packet or any generated/intermediate string, or any parameter sent by the mysql_stmt_send_long_data() C API function.<strong>Recommended value 64 MB.</strong>
 			</div>
 		  </div>
 		</div>
@@ -369,7 +373,7 @@
 		  </h2>
 		  <div id="collapset_tmp_table_size" class="accordion-collapse collapse " aria-labelledby="headingOne" data-bs-parent="#accordionExample">
 			<div class="accordion-body">
-				<strong> The default is 16 MB. </strong>Defines the maximum size of internal in-memory temporary tables created by the MEMORY storage engine and, as of MySQL 8.0.28, the TempTable storage engine. If an internal in-memory temporary table exceeds this size, it is automatically converted to an on-disk internal temporary table.
+				<strong> The default is 16 MB. </strong>Defines the maximum size of internal in-memory temporary tables created by the MEMORY storage engine and, as of MySQL 8.0.28, the TempTable storage engine. If an internal in-memory temporary table exceeds this size, it is automatically converted to an on-disk internal temporary table.<strong>Less than 1% of available RAM.</strong>
 			</div>
 		  </div>
 		</div>
