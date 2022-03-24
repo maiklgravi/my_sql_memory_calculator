@@ -247,17 +247,14 @@ function rekomandation(){
     </div>`
     }    
 }
-document.getElementById('inputfile')
-            .addEventListener('change', function() {  
-            var fr=new FileReader();
-            fr.onload=function(){
-            configuration = String(fr.result);
-             if(Number(configuration.split('key_buffer_size=').pop().split('M')[0]))
-             {
-              key_buffer_size.value = Number(configuration.split('key_buffer_size=').pop().split('M')[0]);
-             }
-
-             if(Number(configuration.split('query_cache_size=').pop().split('M')[0]))
+document.getElementById('inputfile').addEventListener('change', function() {  
+var fr=new FileReader();
+  fr.onload=function(){
+    configuration = String(fr.result);
+      if(Number(configuration.split('key_buffer_size=').pop().split('M')[0])){
+         key_buffer_size.value = Number(configuration.split('key_buffer_size=').pop().split('M')[0]);
+        }
+         if(Number(configuration.split('query_cache_size=').pop().split('M')[0]))
              {
               query_cache_size.value = Number(configuration.split('query_cache_size=').pop().split('M')[0]);
              }
@@ -276,10 +273,32 @@ document.getElementById('inputfile')
               max_allowed_packet.value = Number(configuration.split('max_allowed_packet=').pop().split('M')[0]);
              }
 
-             if(true)
-             {
-             configuration.startsWith('');
-             }
+             if(Number(configuration.split('max_connections=').pop().substr(0, 5)))
+             {max_connections.value = Number(configuration.split('max_connections=').pop().substr(0, 5));}else{
+                  if(Number(configuration.split('max_connections=').pop().substr(0, 4))){
+                  max_connections.value = Number(configuration.split('max_connections=').pop().substr(0, 4));
+                    }else{
+                      if(Number(configuration.split('max_connections=').pop().substr(0, 3)))
+                  {
+                    max_connections.value = Number(configuration.split('max_connections=').pop().substr(0, 3));
+                  }else{
+                    if(Number(configuration.split('max_connections=').pop().substr(0, 2)))
+                    {
+                      max_connections.value = Number(configuration.split('max_connections=').pop().substr(0, 2));
+                    }else{
+                      if(Number(configuration.split('max_connections=').pop().substr(0, 1)))
+                      {
+                        max_connections.value = Number(configuration.split('max_connections=').pop().substr(0, 1));
+                      }else{
+                        if(Number(configuration.split('max_connections=').pop().substr(0)))
+                        {
+                          max_connections.value = Number(configuration.split('max_connections=').pop().substr(0));
+                        }
+                      }
+                    }
+                  }
+                    }
+                }
 
              if(Number(configuration.split('read_buffer_size=').pop().split('M')[0]))
              {
@@ -320,7 +339,8 @@ document.getElementById('inputfile')
               net_buffer_length.value = Number(configuration.split('net_buffer_length=').pop().split('M')[0]);
              }
             }
-            fr.readAsText(this.files[0]);})
+            fr.readAsText(this.files[0]);
+})
 
 key_buffer_size.onchange = canculate;
 query_cache_size.onchange = canculate;
