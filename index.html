@@ -1,432 +1,536 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<meta charset="utf-8">
 	<link rel="shortcut icon" href="sql_icon.png" type="image/png">
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600&display=swap" rel="stylesheet">
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-	<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600&display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
 	<title>MSQL calculator</title>
 </head>
+
 <body>
-<div>
-<nav class="navbar navbar-light">
-		<div class="container-fluid">
-		 <img src="sql_icon.png" class="sql_icon navbar-brand">
-		 <div class="font">
-			MySQL Calculator
-		</div>
-		</div>
-</nav>
-
-<div class="content">
-<div class="title">MySQL Memory Calculator</div>
-<div class="text-center description">
-<div>Use this form when tuning your MySQL database server to calculate the maximum MySQL memory usage based on configuration settings used in your my.cnf file for InnoDB.</div>
-<div class="row">
-<div class="col p-3">
-	<div class="fs-6 mb-2">Select your system:</div>
-	<select class="form-select" id="system">
-		<option value="1">32 bit</option>
-		<option value="2">64 bit</option>
-	  </select>
-</div>
-<div class="col p-3">
-	<div class="fs-6 mb-2">MySql version:</div>
-	<select class="form-select" id="version">
-		<option value="1">≥ 8.0.27</option>
-		<option value="2">≤ 8.0.26</option>
-		<option value="3">lower 8.0</option>
-	  </select>
-</div>
-<div class="col p-3">
-	<div class="fs-6 mb-2">Select your OS:</div>
-	<select class="form-select" id="os_system">
-		<option value="1">Windows</option>
-		<option value="2">Other</option>
-	  </select>
-</div>
-<div class="col p-3">
-	<div class="fs-6 mb-2">Paste you configuration:</div>
-	<input class="form-control" type="file" id="inputfile" accept=".cnf">
-</div>
-<div id="info">
-
-</div>
-</div>
-<div>
-
-</div>
-<div class="accordion" id="accordionPanelsStayOpenExample">	
-<div class="row">
-
-<div class="col-xl-9">
-	
-		<div class="accordion-item">
-		  <h2 class="accordion-header" id="headingOne">
-			<button class="accordion-button " type="button" data-bs-toggle="collapse" data-bs-target="#collapset_key_buffer_size" aria-expanded="false" aria-controls="collapset_key_buffer_size">
-				key_buffer_size
-			</button>
-		  </h2>
-		  <div id="collapset_key_buffer_size" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-			<div class="accordion-body">
-				<strong>Default value is 8 MB.</strong> key_buffer_size is a MyISAM variable which determines the size of the index buffers held in memory, which affects the speed of index reads. Note that Aria tables by default make use of an alternative setting, aria-pagecache-buffer-size.
-			  A good rule of thumb for servers consisting particularly of MyISAM tables is for about 25% or more of the available server memory to be dedicated to the key buffer.
-			  <strong>Recommended value 16-32 MB.</strong>
+	<div>
+		<nav class="navbar navbar-light">
+			<div class="container-fluid">
+				<img src="sql_icon.png" class="sql_icon navbar-brand">
+				<div class="font">
+					MySQL Calculator
+				</div>
 			</div>
-		  </div>
-		</div>
-	  
-</div>
-<div class="col-xl-3 text-center">
-	<div class="form-floating mb-3">
-		<input type="text" class="form-control" value="8" id="key_buffer_size">
-		<label for="floatingInput">key_buffer_size</label>
-	  </div>
-</div>
-</div>
+		</nav>
 
-<div class="row">
-<div class="col-xl-9">
-	
-		<div class="accordion-item">
-		  <h2 class="accordion-header" id="headingOne">
-			<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapset_query_cache_size" aria-expanded="true" aria-controls="collapset_query_cache_size">
-				query_cache_size
-			</button>
-		  </h2>
-		  <div id="collapset_query_cache_size" class="accordion-collapse collapse " aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-			<div class="accordion-body">
-				<strong>Default value is 0 MB.</strong> The query cache is deprecated as of MySQL 5.7.20, and is removed in MySQL 8.0. Deprecation includes query_cache_size.The amount of memory allocated for caching query results. By default, the query cache is disabled. <strong>Recommended value 0 MB.</strong>
+		<div class="content">
+			<div class="title">MySQL Memory Calculator</div>
+			<div class="text-center description">
+				<div>Use this form when tuning your MySQL database server to calculate the maximum MySQL memory usage
+					based on configuration settings used in your my.cnf file for InnoDB.</div>
+				<div class="row">
+					<div class="col p-3">
+						<div class="fs-6 mb-2">Select your system:</div>
+						<select class="form-select" id="system">
+							<option value="1">32 bit</option>
+							<option value="2">64 bit</option>
+						</select>
+					</div>
+					<div class="col p-3">
+						<div class="fs-6 mb-2">MySql version:</div>
+						<select class="form-select" id="version">
+							<option value="1">≥ 8.0.27</option>
+							<option value="2">≤ 8.0.26</option>
+							<option value="3">lower 8.0</option>
+						</select>
+					</div>
+					<div class="col p-3">
+						<div class="fs-6 mb-2">Select your OS:</div>
+						<select class="form-select" id="os_system">
+							<option value="1">Windows</option>
+							<option value="2">Other</option>
+						</select>
+					</div>
+					<div class="col p-3">
+						<div class="fs-6 mb-2">Paste you configuration:</div>
+						<input class="form-control" type="file" id="inputfile" accept=".cnf">
+					</div>
+					<div id="info">
+
+					</div>
+				</div>
+				<div>
+
+				</div>
+				<div class="accordion" id="accordionPanelsStayOpenExample">
+					<div class="row">
+
+						<div class="col-xl-9">
+
+							<div class="accordion-item">
+								<h2 class="accordion-header" id="headingOne">
+									<button class="accordion-button " type="button" data-bs-toggle="collapse"
+										data-bs-target="#collapset_key_buffer_size" aria-expanded="false"
+										aria-controls="collapset_key_buffer_size">
+										key_buffer_size
+									</button>
+								</h2>
+								<div id="collapset_key_buffer_size" class="accordion-collapse collapse"
+									aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+									<div class="accordion-body">
+										<strong>Default value is 8 MB.</strong> key_buffer_size is a MyISAM variable
+										which determines the size of the index buffers held in memory, which affects the
+										speed of index reads. Note that Aria tables by default make use of an
+										alternative setting, aria-pagecache-buffer-size.
+										A good rule of thumb for servers consisting particularly of MyISAM tables is for
+										about 25% or more of the available server memory to be dedicated to the key
+										buffer.
+										<strong>Recommended value 16-32 MB.</strong>
+									</div>
+								</div>
+							</div>
+
+						</div>
+						<div class="col-xl-3 text-center">
+							<div class="form-floating mb-3">
+								<input type="text" class="form-control" value="8" id="key_buffer_size">
+								<label for="floatingInput">key_buffer_size MB</label>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-xl-9">
+
+							<div class="accordion-item">
+								<h2 class="accordion-header" id="headingOne">
+									<button class="accordion-button" type="button" data-bs-toggle="collapse"
+										data-bs-target="#collapset_query_cache_size" aria-expanded="true"
+										aria-controls="collapset_query_cache_size">
+										query_cache_size
+									</button>
+								</h2>
+								<div id="collapset_query_cache_size" class="accordion-collapse collapse "
+									aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+									<div class="accordion-body">
+										<strong>Default value is 0 MB.</strong> The query cache is deprecated as of
+										MySQL 5.7.20, and is removed in MySQL 8.0. Deprecation includes
+										query_cache_size.The amount of memory allocated for caching query results. By
+										default, the query cache is disabled. <strong>Recommended value 0 MB.</strong>
+									</div>
+								</div>
+							</div>
+
+						</div>
+						<div class="col-xl-3 text-center">
+							<div class="form-floating mb-3">
+								<input type="text" class="form-control" id="query_cache_size" value="0">
+								<label for="floatingInput">query_cache_size MB</label>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-xl-9">
+
+							<div class="accordion-item">
+								<h2 class="accordion-header" id="headingOne">
+									<button class="accordion-button" type="button" data-bs-toggle="collapse"
+										data-bs-target="#collapset_innodb_buffer_pool_size" aria-expanded="true"
+										aria-controls="collapset_innodb_buffer_pool_size">
+										innodb_buffer_pool_size
+									</button>
+								</h2>
+								<div id="collapset_innodb_buffer_pool_size" class="accordion-collapse collapse "
+									aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+									<div class="accordion-body">
+										<strong>Default value is 128 MB.</strong> The size in bytes of the buffer pool,
+										the memory area where InnoDB caches table and index data.
+										A larger buffer pool requires less disk I/O to access the same table data more
+										than once. On a dedicated database server, you might set the buffer pool size to
+										80% of the machine's physical memory size. Be aware of the following potential
+										issues when configuring buffer pool size, and be prepared to scale back the size
+										of the buffer pool if necessary.<strong>Recommended value is 70-80 % of
+											available RAM.</strong>
+									</div>
+								</div>
+							</div>
+
+						</div>
+						<div class="col-xl-3 text-center">
+							<div class="form-floating mb-3">
+								<input type="text" class="form-control" value="128" id="innodb_buffer_pool_size">
+								<label for="floatingInput">innodb_buffer_pool_size MB</label>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-xl-9">
+
+							<div class="accordion-item">
+								<h2 class="accordion-header" id="headingOne">
+									<button class="accordion-button" type="button" data-bs-toggle="collapse"
+										data-bs-target="#collapset_innodb_log_buffer_size" aria-expanded="true"
+										aria-controls="collapset_innodb_log_buffer_size">
+										innodb_log_buffer_size
+									</button>
+								</h2>
+								<div id="collapset_innodb_log_buffer_size" class="accordion-collapse collapse "
+									aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+									<div class="accordion-body">
+										<strong>Default value is 16 MB.</strong> The size in bytes of the buffer that
+										InnoDB uses to write to the log files on disk.<strong>Recommended value 16
+											MB.</strong>
+									</div>
+								</div>
+							</div>
+
+						</div>
+						<div class="col-xl-3 text-center">
+							<div class="form-floating mb-3">
+								<input type="text" class="form-control" value="16" id="innodb_log_buffer_size">
+								<label for="floatingInput">innodb_log_buffer_size MB</label>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-xl-9">
+
+							<div class="accordion-item">
+								<h2 class="accordion-header" id="headingOne">
+									<button class="accordion-button" type="button" data-bs-toggle="collapse"
+										data-bs-target="#collapset_max_allowed_packet" aria-expanded="true"
+										aria-controls="collapset_max_allowed_packet">
+										max_allowed_packet
+									</button>
+								</h2>
+								<div id="collapset_max_allowed_packet" class="accordion-collapse collapse"
+									aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+									<div class="accordion-body">
+										<strong> The default is 64MB. </strong> The maximum size of one packet or any
+										generated/intermediate string, or any parameter sent by the
+										mysql_stmt_send_long_data() C API function.<strong>Recommended value 64
+											MB.</strong>
+									</div>
+								</div>
+							</div>
+
+						</div>
+						<div class="col-xl-3 text-center">
+							<div class="form-floating mb-3">
+								<input type="text" class="form-control" value="64" id="max_allowed_packet">
+								<label for="floatingInput">max_allowed_packet MB</label>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="row">
+						<div class="col-xl-9">
+
+							<div class="accordion-item">
+								<h2 class="accordion-header" id="headingOne">
+									<button class="accordion-button" type="button" data-bs-toggle="collapse"
+										data-bs-target="#collapset_max_connections" aria-expanded="true"
+										aria-controls="collapset_max_connections">
+										max_connections
+									</button>
+								</h2>
+								<div id="collapset_max_connections" class="accordion-collapse collapse"
+									aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+									<div class="accordion-body">
+										<strong> The default is 151. </strong> The maximum permitted number of
+										simultaneous client connections. The maximum effective value is the lesser of
+										the effective value of open_files_limit - 810, and the value actually set for
+										max_connections.
+									</div>
+								</div>
+							</div>
+
+						</div>
+						<div class="col-xl-3 text-center">
+							<div class="form-floating mb-3">
+								<input type="text" class="form-control" value="151" id="max_connections">
+								<label for="floatingInput">max_connections</label>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-xl-9">
+
+							<div class="accordion-item">
+								<h2 class="accordion-header" id="headingOne">
+									<button class="accordion-button" type="button" data-bs-toggle="collapse"
+										data-bs-target="#collapset_read_buffer_size" aria-expanded="true"
+										aria-controls="collapset_read_buffer_size">
+										read_buffer_size
+									</button>
+								</h2>
+								<div id="collapset_read_buffer_size" class="accordion-collapse collapse"
+									aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+									<div class="accordion-body">
+										<strong> The default is 0.125 MB. </strong> Each thread that does a sequential
+										scan for a MyISAM table allocates a buffer of this size (in bytes) for each
+										table it scans. If you do many sequential scans, you might want to increase this
+										value, which defaults to 131072. The value of this variable should be a multiple
+										of 4KB. If it is set to a value that is not a multiple of 4KB, its value is
+										rounded down to the nearest multiple of 4KB.
+									</div>
+								</div>
+							</div>
+
+						</div>
+						<div class="col-xl-3 text-center">
+							<div class="form-floating mb-3">
+								<input type="text" class="form-control" value="0.125" id="read_buffer_size">
+								<label for="floatingInput">read_buffer_size MB</label>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-xl-9">
+
+							<div class="accordion-item">
+								<h2 class="accordion-header" id="headingOne">
+									<button class="accordion-button" type="button" data-bs-toggle="collapse"
+										data-bs-target="#collapset_read_rnd_buffer_size" aria-expanded="true"
+										aria-controls="collapset_read_rnd_buffer_size">
+										read_rnd_buffer_size
+									</button>
+								</h2>
+								<div id="collapset_read_rnd_buffer_size" class="accordion-collapse collapse"
+									aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+									<div class="accordion-body">
+										<strong> The default is 0.25 MB. </strong> This variable is used for reads from
+										MyISAM tables, and, for any storage engine, for Multi-Range Read optimization.
+									</div>
+								</div>
+							</div>
+
+						</div>
+						<div class="col-xl-3 text-center">
+							<div class="form-floating mb-3">
+								<input type="text" class="form-control" value="0.25" id="read_rnd_buffer_size">
+								<label for="floatingInput">read_rnd_buffer_size MB</label>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-xl-9">
+
+							<div class="accordion-item">
+								<h2 class="accordion-header" id="headingOne">
+									<button class="accordion-button" type="button" data-bs-toggle="collapse"
+										data-bs-target="#collapset_sort_buffer_size" aria-expanded="true"
+										aria-controls="collapset_sort_buffer_size">
+										sort_buffer_size
+									</button>
+								</h2>
+								<div id="collapset_sort_buffer_size" class="accordion-collapse collapse"
+									aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+									<div class="accordion-body">
+										<strong> The default is 0.25 MB. </strong> Each session that must perform a sort
+										allocates a buffer of this size. sort_buffer_size is not specific to any storage
+										engine and applies in a general manner for optimization. At minimum the
+										sort_buffer_size value must be large enough to accommodate fifteen tuples in the
+										sort buffer. Also, increasing the value of max_sort_length may require
+										increasing the value of sort_buffer_size.
+									</div>
+								</div>
+
+							</div>
+						</div>
+						<div class="col-xl-3 text-center">
+							<div class="form-floating mb-3">
+								<input type="text" class="form-control" value="0.25" id="sort_buffer_size">
+								<label for="floatingInput">sort_buffer_size MB</label>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-xl-9">
+
+							<div class="accordion-item">
+								<h2 class="accordion-header" id="headingOne">
+									<button class="accordion-button" type="button" data-bs-toggle="collapse"
+										data-bs-target="#collapset_join_buffer_size" aria-expanded="true"
+										aria-controls="collapset_join_buffer_size">
+										join_buffer_size
+									</button>
+								</h2>
+								<div id="collapset_join_buffer_size" class="accordion-collapse collapse"
+									aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+									<div class="accordion-body">
+										<strong> The default is 0.25 MB. </strong> The minimum size of the buffer that
+										is used for plain index scans, range index scans, and joins that do not use
+										indexes and thus perform full table scans. Normally, the best way to get fast
+										joins is to add indexes. Increase the value of join_buffer_size to get a faster
+										full join when adding indexes is not possible. One join buffer is allocated for
+										each full join between two tables. For a complex join between several tables for
+										which indexes are not used, multiple join buffers might be necessary.
+									</div>
+								</div>
+							</div>
+
+						</div>
+						<div class="col-xl-3 text-center">
+							<div class="form-floating mb-3">
+								<input type="text" class="form-control" value="0.25" id="join_buffer_size">
+								<label for="floatingInput">join_buffer_size MB</label>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-xl-9">
+
+							<div class="accordion-item">
+								<h2 class="accordion-header" id="headingOne">
+									<button class="accordion-button" type="button" data-bs-toggle="collapse"
+										data-bs-target="#collapset_binlog_cache_size" aria-expanded="true"
+										aria-controls="collapset_binlog_cache_size">
+										binlog_cache_size
+									</button>
+								</h2>
+								<div id="collapset_binlog_cache_size" class="accordion-collapse collapse "
+									aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+									<div class="accordion-body">
+										<strong> The default is 0.03125 MB. </strong> The size of the memory buffer to
+										hold changes to the binary log during a transaction.
+									</div>
+								</div>
+							</div>
+
+						</div>
+						<div class="col-xl-3 text-center">
+							<div class="form-floating mb-3">
+								<input type="text" class="form-control" value="0.03125" id="binlog_cache_size">
+								<label for="floatingInput">binlog_cache_size MB</label>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-xl-9">
+
+							<div class="accordion-item">
+								<h2 class="accordion-header" id="headingOne">
+									<button class="accordion-button" type="button" data-bs-toggle="collapse"
+										data-bs-target="#collapset_thread_stack" aria-expanded="true"
+										aria-controls="collapset_thread_stack">
+										thread_stack
+									</button>
+								</h2>
+								<div id="collapset_thread_stack" class="accordion-collapse collapse "
+									aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+									<div class="accordion-body">
+										<strong id="default_thread_stack"> The default is 1 MB. </strong>The stack size
+										for each thread. The default is large enough for normal operation. If the thread
+										stack size is too small, it limits the complexity of the SQL statements that the
+										server can handle, the recursion depth of stored procedures, and other
+										memory-consuming actions.
+									</div>
+								</div>
+							</div>
+
+						</div>
+						<div class="col-xl-3 text-center">
+							<div class="form-floating mb-3">
+								<input type="text" class="form-control" value="1" id="thread_stack">
+								<label for="floatingInput">thread_stack MB</label>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="row">
+						<div class="col-xl-9">
+
+							<div class="accordion-item">
+								<h2 class="accordion-header" id="headingOne">
+									<button class="accordion-button" type="button" data-bs-toggle="collapse"
+										data-bs-target="#collapset_tmp_table_size" aria-expanded="true"
+										aria-controls="collapset_tmp_table_size">
+										tmp_table_size
+									</button>
+								</h2>
+								<div id="collapset_tmp_table_size" class="accordion-collapse collapse "
+									aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+									<div class="accordion-body">
+										<strong> The default is 16 MB. </strong>Defines the maximum size of internal
+										in-memory temporary tables created by the MEMORY storage engine and, as of MySQL
+										8.0.28, the TempTable storage engine. If an internal in-memory temporary table
+										exceeds this size, it is automatically converted to an on-disk internal
+										temporary table.<strong>Less than 1% of available RAM.</strong>
+									</div>
+								</div>
+							</div>
+
+						</div>
+						<div class="col-xl-3 text-center">
+							<div class="form-floating mb-3">
+								<input type="text" class="form-control" value="16" id="tmp_table_size">
+								<label for="floatingInput">tmp_table_size MB</label>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="row">
+						<div class="col-xl-9">
+
+							<div class="accordion-item">
+								<h2 class="accordion-header" id="headingOne">
+									<button class="accordion-button" type="button" data-bs-toggle="collapse"
+										data-bs-target="#collapset_net_buffer_length" aria-expanded="true"
+										aria-controls="collapset_net_buffer_length">
+										net_buffer_length
+									</button>
+								</h2>
+								<div id="collapset_net_buffer_length" class="accordion-collapse collapse"
+									aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+									<div class="accordion-body">
+
+										<strong> The default is 0.015625 MB. </strong>Each client thread is associated
+										with a connection buffer and result buffer. Both begin with a size given by
+										net_buffer_length but are dynamically enlarged up to max_allowed_packet bytes as
+										needed. The result buffer shrinks to net_buffer_length after each SQL statement.
+										This variable should not normally be changed, but if you have very little
+										memory, you can set it to the expected length of statements sent by clients. If
+										statements exceed this length, the connection buffer is automatically enlarged.
+										The maximum value to which net_buffer_length can be set is 1MB.
+									</div>
+								</div>
+							</div>
+
+						</div>
+						<div class="col-xl-3 text-center">
+							<div class="form-floating mb-3">
+								<input type="text" class="form-control" value="0.015625" id="net_buffer_length">
+								<label for="floatingInput">net_buffer_length MB</label>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="font_total col-9">Total:</div>
+						<div class="font_total col-3" id="total">2572 MB</div>
+					</div>
+				</div>
+
+
 			</div>
-		  </div>
 		</div>
-	  
-</div>
-<div class="col-xl-3 text-center">
-	<div class="form-floating mb-3">
-		<input type="text" class="form-control" id="query_cache_size"  value="0">
-		<label for="floatingInput">query_cache_size</label>
-	  </div>
-</div>	
-</div>
-
-<div class="row">
-<div class="col-xl-9">
-	
-		<div class="accordion-item">
-		  <h2 class="accordion-header" id="headingOne">
-			<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapset_innodb_buffer_pool_size" aria-expanded="true" aria-controls="collapset_innodb_buffer_pool_size">
-				innodb_buffer_pool_size
-			</button>
-		  </h2>
-		  <div id="collapset_innodb_buffer_pool_size" class="accordion-collapse collapse " aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-			<div class="accordion-body">
-				<strong>Default value is 128 MB.</strong> The size in bytes of the buffer pool, the memory area where InnoDB caches table and index data.
-				A larger buffer pool requires less disk I/O to access the same table data more than once. On a dedicated database server, you might set the buffer pool size to 80% of the machine's physical memory size. Be aware of the following potential issues when configuring buffer pool size, and be prepared to scale back the size of the buffer pool if necessary.<strong>Recommended value is 70-80 % of available RAM.</strong>
-			</div>
-		  </div>
-		</div>
-	  
-</div>
-<div class="col-xl-3 text-center">
-	<div class="form-floating mb-3">
-		<input type="text" class="form-control" value="128" id="innodb_buffer_pool_size">
-		<label for="floatingInput">innodb_buffer_pool_size</label>
-	  </div>
-</div>	
-</div>
-
-<div class="row">
-<div class="col-xl-9">
-	
-		<div class="accordion-item">
-		  <h2 class="accordion-header" id="headingOne">
-			<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapset_innodb_log_buffer_size" aria-expanded="true" aria-controls="collapset_innodb_log_buffer_size">
-				innodb_log_buffer_size
-			</button>
-		  </h2>
-		  <div id="collapset_innodb_log_buffer_size" class="accordion-collapse collapse " aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-			<div class="accordion-body">
-				<strong>Default value is 16 MB.</strong> The size in bytes of the buffer that InnoDB uses to write to the log files on disk.<strong>Recommended value 16 MB.</strong> 
-			</div>
-		  </div>
-		</div>
-	  
-</div>
-<div class="col-xl-3 text-center">
-	<div class="form-floating mb-3">
-		<input type="text" class="form-control" value="16" id="innodb_log_buffer_size">
-		<label for="floatingInput">innodb_log_buffer_size</label>
-	  </div>
-</div>	
-</div>
-
-<div class="row">
-<div class="col-xl-9">
-	
-		<div class="accordion-item">
-		  <h2 class="accordion-header" id="headingOne">
-			<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapset_max_allowed_packet" aria-expanded="true" aria-controls="collapset_max_allowed_packet">
-				max_allowed_packet
-			</button>
-		  </h2>
-		  <div id="collapset_max_allowed_packet" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-			<div class="accordion-body">
-				<strong> The default is 64MB. </strong> The maximum size of one packet or any generated/intermediate string, or any parameter sent by the mysql_stmt_send_long_data() C API function.<strong>Recommended value 64 MB.</strong>
-			</div>
-		  </div>
-		</div>
-	  
-</div>
-<div class="col-xl-3 text-center">
-	<div class="form-floating mb-3">
-		<input type="text" class="form-control" value="64" id="max_allowed_packet">
-		<label for="floatingInput">max_allowed_packet</label>
-	  </div>
-</div>	
-</div>
-
-
-<div class="row">
-	<div class="col-xl-9">
-	
-		<div class="accordion-item">
-		  <h2 class="accordion-header" id="headingOne">
-			<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapset_max_connections" aria-expanded="true" aria-controls="collapset_max_connections">
-				max_connections
-			</button>
-		  </h2>
-		  <div id="collapset_max_connections" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-			<div class="accordion-body">
-				<strong> The default is 151. </strong> The maximum permitted number of simultaneous client connections. The maximum effective value is the lesser of the effective value of open_files_limit - 810, and the value actually set for max_connections.
-			</div>
-		  </div>
-		</div>
-	  
-</div>
-<div class="col-xl-3 text-center">
-	<div class="form-floating mb-3">
-		<input type="text" class="form-control" value="151" id="max_connections">
-		<label for="floatingInput">max_connections</label>
-	  </div>
-</div>
-</div>
-
-<div class="row">
-	<div class="col-xl-9">
-	
-		<div class="accordion-item">
-		  <h2 class="accordion-header" id="headingOne">
-			<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapset_read_buffer_size" aria-expanded="true" aria-controls="collapset_read_buffer_size">
-				read_buffer_size
-			</button>
-		  </h2>
-		  <div id="collapset_read_buffer_size" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-			<div class="accordion-body">
-				<strong> The default is 0.125 MB. </strong> Each thread that does a sequential scan for a MyISAM table allocates a buffer of this size (in bytes) for each table it scans. If you do many sequential scans, you might want to increase this value, which defaults to 131072. The value of this variable should be a multiple of 4KB. If it is set to a value that is not a multiple of 4KB, its value is rounded down to the nearest multiple of 4KB.
-			</div>
-		  </div>
-		</div>
-	 
-</div>
-<div class="col-xl-3 text-center">
-	<div class="form-floating mb-3">
-		<input type="text" class="form-control" value="0.125" id="read_buffer_size">
-		<label for="floatingInput">read_buffer_size</label>
-	  </div>
-</div>
-</div>
-
-<div class="row">
-	<div class="col-xl-9">
-	
-		<div class="accordion-item">
-		  <h2 class="accordion-header" id="headingOne">
-			<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapset_read_rnd_buffer_size" aria-expanded="true" aria-controls="collapset_read_rnd_buffer_size">
-				read_rnd_buffer_size
-			</button>
-		  </h2>
-		  <div id="collapset_read_rnd_buffer_size" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-			<div class="accordion-body">
-				<strong> The default is 0.25 MB. </strong> This variable is used for reads from MyISAM tables, and, for any storage engine, for Multi-Range Read optimization.
-			</div>
-		  </div>
-		</div>
-	  
-</div>
-<div class="col-xl-3 text-center">
-	<div class="form-floating mb-3">
-		<input type="text" class="form-control" value="0.25" id="read_rnd_buffer_size">
-		<label for="floatingInput">read_rnd_buffer_size</label>
-	  </div>
-</div>
-</div>
-
-<div class="row">
-	<div class="col-xl-9">
-	
-		<div class="accordion-item">
-		  <h2 class="accordion-header" id="headingOne">
-			<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapset_sort_buffer_size" aria-expanded="true" aria-controls="collapset_sort_buffer_size">
-				sort_buffer_size
-			</button>
-		  </h2>
-		  <div id="collapset_sort_buffer_size" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-			<div class="accordion-body">
-				<strong> The default is 0.25 MB. </strong> Each session that must perform a sort allocates a buffer of this size. sort_buffer_size is not specific to any storage engine and applies in a general manner for optimization. At minimum the sort_buffer_size value must be large enough to accommodate fifteen tuples in the sort buffer. Also, increasing the value of max_sort_length may require increasing the value of sort_buffer_size.
-			</div>
-		  </div>
-		
-	  </div>
-</div>
-<div class="col-xl-3 text-center">
-	<div class="form-floating mb-3">
-		<input type="text" class="form-control" value="0.25" id="sort_buffer_size">
-		<label for="floatingInput">sort_buffer_size</label>
-	  </div>
-</div>
-</div>
-
-<div class="row">
-	<div class="col-xl-9">
-	
-		<div class="accordion-item">
-		  <h2 class="accordion-header" id="headingOne">
-			<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapset_join_buffer_size" aria-expanded="true" aria-controls="collapset_join_buffer_size">
-				join_buffer_size
-			</button>
-		  </h2>
-		  <div id="collapset_join_buffer_size" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-			<div class="accordion-body">
-				<strong> The default is 0.25 MB. </strong> The minimum size of the buffer that is used for plain index scans, range index scans, and joins that do not use indexes and thus perform full table scans. Normally, the best way to get fast joins is to add indexes. Increase the value of join_buffer_size to get a faster full join when adding indexes is not possible. One join buffer is allocated for each full join between two tables. For a complex join between several tables for which indexes are not used, multiple join buffers might be necessary.
-			</div>
-		  </div>
-		</div>
-	  
-</div>
-<div class="col-xl-3 text-center">
-	<div class="form-floating mb-3">
-		<input type="text" class="form-control" value="0.25" id="join_buffer_size">
-		<label for="floatingInput">join_buffer_size</label>
-	  </div>
-</div>
-</div>
- 
-<div class="row">
-	<div class="col-xl-9">
-	
-		<div class="accordion-item">
-		  <h2 class="accordion-header" id="headingOne">
-			<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapset_binlog_cache_size" aria-expanded="true" aria-controls="collapset_binlog_cache_size">
-				binlog_cache_size
-			</button>
-		  </h2>
-		  <div id="collapset_binlog_cache_size" class="accordion-collapse collapse " aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-			<div class="accordion-body">
-				<strong> The default is 0.03125 MB. </strong> The size of the memory buffer to hold changes to the binary log during a transaction.
-			</div>
-		  </div>
-		</div>
-	  
-</div>
-<div class="col-xl-3 text-center">
-	<div class="form-floating mb-3">
-		<input type="text" class="form-control" value="0.03125" id="binlog_cache_size">
-		<label for="floatingInput">binlog_cache_size</label>
-	  </div>
-</div>
-</div>
-
-<div class="row">
-	<div class="col-xl-9">
-	
-		<div class="accordion-item">
-		  <h2 class="accordion-header" id="headingOne">
-			<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapset_thread_stack" aria-expanded="true" aria-controls="collapset_thread_stack">
-				thread_stack
-			</button>
-		  </h2>
-		  <div id="collapset_thread_stack" class="accordion-collapse collapse " aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-			<div class="accordion-body">
-				<strong id="default_thread_stack"> The default is 1 MB. </strong>The stack size for each thread. The default is large enough for normal operation. If the thread stack size is too small, it limits the complexity of the SQL statements that the server can handle, the recursion depth of stored procedures, and other memory-consuming actions.
-			</div>
-		  </div>
-		</div>
-	  
-</div>
-<div class="col-xl-3 text-center">
-	<div class="form-floating mb-3">
-		<input type="text" class="form-control" value="1" id="thread_stack">
-		<label for="floatingInput">thread_stack</label>
-	  </div>
-</div>
-</div>
-
-
-<div class="row">
-	<div class="col-xl-9">
-	
-		<div class="accordion-item">
-		  <h2 class="accordion-header" id="headingOne">
-			<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapset_tmp_table_size" aria-expanded="true" aria-controls="collapset_tmp_table_size">
-				tmp_table_size
-			</button>
-		  </h2>
-		  <div id="collapset_tmp_table_size" class="accordion-collapse collapse " aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-			<div class="accordion-body">
-				<strong> The default is 16 MB. </strong>Defines the maximum size of internal in-memory temporary tables created by the MEMORY storage engine and, as of MySQL 8.0.28, the TempTable storage engine. If an internal in-memory temporary table exceeds this size, it is automatically converted to an on-disk internal temporary table.<strong>Less than 1% of available RAM.</strong>
-			</div>
-		  </div>
-		</div>
-	 
-</div>
-<div class="col-xl-3 text-center">
-	<div class="form-floating mb-3">
-		<input type="text" class="form-control" value="16" id="tmp_table_size">
-		<label for="floatingInput">tmp_table_size</label>
-	  </div>
-</div>
-</div>
-
-
-<div class="row">
-	<div class="col-xl-9">
-	
-		<div class="accordion-item">
-		  <h2 class="accordion-header" id="headingOne">
-			<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapset_net_buffer_length" aria-expanded="true" aria-controls="collapset_net_buffer_length">
-				net_buffer_length
-			</button>
-		  </h2>
-		  <div id="collapset_net_buffer_length" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-			<div class="accordion-body">
-
-				<strong> The default is 0.015625 MB. </strong>Each client thread is associated with a connection buffer and result buffer. Both begin with a size given by net_buffer_length but are dynamically enlarged up to max_allowed_packet bytes as needed. The result buffer shrinks to net_buffer_length after each SQL statement.
-This variable should not normally be changed, but if you have very little memory, you can set it to the expected length of statements sent by clients. If statements exceed this length, the connection buffer is automatically enlarged. The maximum value to which net_buffer_length can be set is 1MB.
-			</div>
-		  </div>
-		</div>
-	  
-</div>
-<div class="col-xl-3 text-center">
-	<div class="form-floating mb-3">
-		<input type="text" class="form-control" value="0.015625" id="net_buffer_length">
-		<label for="floatingInput">net_buffer_length</label>
-	  </div>
-</div>
-</div>
-<div class="row">
-<div class="font_total col-9">Total:</div>
-<div class="font_total col-3" id="total">2572 MB</div>	
-</div>
-</div>
-	
-
-</div>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-<script src="canculate.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+			crossorigin="anonymous"></script>
+		<script src="canculate.js"></script>
 </body>
+
 </html>
