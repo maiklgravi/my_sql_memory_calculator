@@ -15,9 +15,7 @@ function canculate() {
   const net_buffer_length = document.getElementById("net_buffer_length");
   const total = document.getElementById("total");
   const info = document.getElementById("info");
-  const system = document.getElementById("system");
   const version = document.getElementById("version");
-  const os_system = document.getElementById("os_system");
   const conection_hash =
     Number(read_buffer_size.value) +
     Number(read_rnd_buffer_size.value) +
@@ -79,47 +77,19 @@ function default_value(key_name,value){
 }
 function rekomandation() {
   info.innerHTML = "";
-  
-  if (system.value === "1") {
-    valueError(key_buffer_size,4095.9999990463257,0);
-  }
   valueError(net_buffer_length,1,0.0009765625);
   valueError(tmp_table_size,17592186044416,0.0009765625);
 
-  if (system.value === "1") {
-    
-    if (version.value === "1") {
+  valueError(thread_stack,4095.9990234375,0.125);
+  if (version.value === "1") {
       default_value(default_thread_stack,1)
     } else {
       default_value(default_thread_stack,0.2109375)
     }
-    valueError(thread_stack,4095.9990234375,0.125);
-  } else {
-    if (version.value === "1") {
-      default_value(default_thread_stack,1)
-    } else {
-      default_value(default_thread_stack,0.2734375)
-    }
-    valueError(thread_stack,17592186044416,0.125);
-  }
-
-  if (system.value === "1") {
-    valueError(binlog_cache_size,4095.9999990463257,0.000244140625);
-  } else {
-    valueError(binlog_cache_size,17592186044415.996,0.000244140625);
-  }
-
-  if (os_system.value === "2" && system.value === "2") {
-    valueError(join_buffer_size,17592186044416,0.0001220703125);
-  } else {
-    valueError(join_buffer_size,39999.99987793,0.0001220703125);
-  }
-
-  if (os_system.value === "2" && system.value === "2") {
-    valueError(sort_buffer_size,17592186044416,0.03125);
-  } else {
-    valueError(sort_buffer_size,4095.9999990463257,0.03125);
-  }
+  valueError(binlog_cache_size,4095.9999990463257,0.000244140625);
+  valueError(join_buffer_size,17592186044416,0.0001220703125);
+  valueError(sort_buffer_size,17592186044416,0.03125);
+  
   if (Number(innodb_buffer_pool_size.value) < 5) {
     info.innerHTML =
       info.innerHTML +
@@ -242,7 +212,7 @@ function convert(key_name) {
   }
 }
 
-document.getElementById("inputfile").addEventListener("change", function () {
+document.getElementById("input__file").addEventListener("change", function () {
   var fr = new FileReader();
   fr.onload = function () {
     configuration = String(fr.result);
@@ -303,8 +273,8 @@ binlog_cache_size.onchange = canculate;
 thread_stack.onchange = canculate;
 tmp_table_size.onchange = canculate;
 net_buffer_length.onchange = canculate;
-system.onchange = canculate;
+
 version.onchange = canculate;
-os_system.onchange = canculate;
+
 
 window.onload = canculate;
