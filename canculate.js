@@ -76,6 +76,13 @@ function default_value(key_name,value){
   element.textContent = "The default is " + value + " MB";
 }
 function rekomandation() {
+  if(version.value === "3"){
+    document.getElementById('query_cache_size_element').hidden=false
+    document.getElementById('query_cache_size').value=0
+  }else{
+    document.getElementById('query_cache_size_element').hidden=true
+    document.getElementById('query_cache_size').value=0
+  }
   info.innerHTML = "";
   valueError(net_buffer_length,1,0.0009765625);
   valueError(tmp_table_size,17592186044416,0.0009765625);
